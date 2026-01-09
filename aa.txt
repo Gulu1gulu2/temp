@@ -1,0 +1,14 @@
+docker run -d \
+    --name vllm-backend \
+    --network ai-net \
+    --runtime nvidia \
+    --gpus all \
+    -v /home/models:/models \
+    --ipc=host \
+    --restart always \
+    vllm/vllm-openai:latest \
+    --model /models/Qwen2.5-7B-Instruct \
+    --served-model-name Qwen2.5-7B \
+    --api-key "teampassword123" \
+    --max-model-len 4096 \
+    --gpu-memory-utilization 0.9
